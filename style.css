@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+  }
+  
+  .container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  
+  h1, h2 {
+    color: #444;
+  }
+  
+  form label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  
+  form input, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #generate-btn {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  #print-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  #print-btn:hover {
+    background-color: #45a049; /* Darker green */
+  }
+
+  #print-btn:active {
+    transform: scale(0.98); /* Slight press effect */
+  }
+  
+  #generate-btn:hover {
+    background: #0056b3;
+  }
+  
+  #cv-preview {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+  @media print {
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #cv-preview {
+      width: 210mm; /* A4 width */
+      min-height: 297mm; /* A4 height */
+      padding: 20mm;
+      margin: auto;
+      border: 1px solid black; /* Optional border for clarity */
+      background-color: white;
+    }
+
+    button, input, textarea, #cv-form {
+      display: none; /* Hide non-essential elements during printing */
+    }
+  }
+  

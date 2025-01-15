@@ -47,19 +47,6 @@
           <label for="first-name">First Name:</label>
           <input type="text" id="first-name" placeholder="Enter first name" />
 
-          <label for="other-name">Other Name:</label>
-          <input
-            type="text"
-            id="other-name"
-            placeholder="Other name if not type NU"
-          />
-
-          <label for="place-of-birth">Country of Birth:</label>
-          <input
-            type="text"
-            id="place-of-birth"
-            placeholder="Enter Country of Birth"
-          />
 
           <label for="city-of-birth">Place of Birth:</label>
           <input
@@ -85,20 +72,9 @@
             placeholder="Enter Mother Name (SURNAME NAME)"
           />
 
-          <label for="nation-counrty">Nationality:</label>
-          <input
-            type="text"
-            id="nation-counrty"
-            placeholder="(Enter Nationality)"
-          />
+      
 
-          <label for="citizen-ship">Citizenship:</label>
-          <input
-            type="text"
-            id="citizen-ship"
-            placeholder="(Enter Citizenship eg. Nepalese)"
-          />
-
+    
           <label for="pp-no">Passport Number:</label>
           <input
             type="text"
@@ -106,12 +82,7 @@
             placeholder="(Enter Passport Number )"
           />
 
-          <label for="issued-by">Passport Issued By:</label>
-          <input
-            type="text"
-            id="issued-by"
-            placeholder="(Enter Passport Issuing Authority )"
-          />
+          
 
           <label for="issue-date">Passport Issue Date:</label>
           <input type="text" id="issue-date" placeholder="01 jan 1990"  />
@@ -127,30 +98,15 @@
           />
 
           <label for="marital">Marital Status:</label>
-          <input
-            type="text"
-            id="marital"
-            placeholder="(Marital Status eg.NECASATORIT )"
-          />
+<select id="marital" onchange="updateInputValue()">
+    <option value="necăsătorit">SINGLE</option>
+    <option value="căsătorit">Married</option>
+</select>
 
-          <label for="no-child">Children count</label>
-          <input
-            type="text"
-            id="no-child"
-            placeholder="(Enter number of child or NU )"
-          />
-          <label for="language-known">Languages Known</label>
-          <input
-            type="text"
-            id="language-known"
-            placeholder="(Eg. Nepali, Hindi, English )"
-          />
-          <label for="main-profession">Main Profession</label>
-          <input
-            type="text"
-            id="main-profession"
-            placeholder="(Main Profession eg. General Worker)"
-          />
+
+          
+         
+          
           
         </div>
 
@@ -213,5 +169,6 @@
     <script src="tableFunction.js"></script>
     <script src="script.js"></script>
     <script src="print.js"></script>
+    
   </body>
 </html>

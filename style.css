@@ -118,4 +118,32 @@ body {
       display: none; /* Hide non-essential elements during printing */
     }
   }
-  
+  /* Style the dropdown */
+#marital {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Change border and background color on focus */
+#marital:focus {
+  border-color: #007bff;
+  background-color: #e8f0fe;
+  outline: none;
+}
+
+/* Style the options inside the dropdown */
+#marital option {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Optional: Add hover effect for options */
+#marital option:hover {
+  background-color: #f0f0f0;
+}

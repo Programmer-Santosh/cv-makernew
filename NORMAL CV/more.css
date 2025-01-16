@@ -48,3 +48,11 @@
   .citizen {
     display: none;
   }
+
+  #imagePreview {
+    width: 3.5cm;  /* Set width to 3.5 cm */
+    height: 4.5cm; /* Set height to 4.5 cm */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    margin-top: 10px;
+    display: none; /* Initially hide the image preview */
+  }

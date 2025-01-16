@@ -86,6 +86,10 @@
       .hide-on-empty.hide {
         display: none;
       }
+      .photoCV {
+        position: absolute;
+        right: 4cm;
+      }
     </style>
   </head>
   <body>
@@ -294,6 +298,34 @@
             placeholder="Enter your text..."
           ></textarea>
         </div>
+        <h2>Experience 2</h2>
+        <div class="textarea-container">
+          <label for="my-experience2">Write Here:</label>
+          <textarea
+            id="my-experience2"
+            placeholder="Enter your text..."
+          ></textarea>
+        </div>
+        <h2>Experience 3</h2>
+        <div class="textarea-container">
+          <label for="my-experience3">Write Here:</label>
+          <textarea
+            id="my-experience3"
+            placeholder="Enter your text..."
+          ></textarea>
+        </div>
+        <!-- image -->
+
+        <label for="imageUpload">Upload Image:</label>
+<input 
+  type="file" 
+  id="imageUpload" 
+  name="image" 
+  accept="image/*" 
+  onchange="previewImage(event)" 
+/>
+<br>
+<img id="imagePreview" src="#" alt="Image Preview" style="display:none; margin-top: 10px;" />
         <!-- Submit -->
         <button type="button" id="generate-btn">Generate CV</button>
       </form>
@@ -304,6 +336,7 @@
     <div>
       <button id="print-btn">Print Preview</button>
     </div>
+  
     <script>
       function restrictToNumbers(event) {
         const inputField = event.target;

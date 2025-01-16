@@ -1,7 +1,7 @@
 document.getElementById("generate-btn").addEventListener("click", () => {
   const lastName = document.getElementById("last-name").value.toUpperCase();
   const firstName = document.getElementById("first-name").value.toUpperCase();
-  const dob = document.getElementById("date-of-birth").value;
+  const dob = document.getElementById("date-of-birth").value.toUpperCase();
  
 
   

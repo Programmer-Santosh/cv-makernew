@@ -1,22 +1,26 @@
 function previewImage(event) {
-    const output = document.getElementById('imagePreview');
-    const file = event.target.files[0]; // Get the selected file
-    if (file) {
-      const reader = new FileReader(); // Create a FileReader to read the file
-      reader.onload = function() {
-        output.src = reader.result; // Set the image preview to the data URL
-        output.style.display = 'block'; // Show the image preview
-      }
-      reader.readAsDataURL(file); // Read the image as a data URL
-    } else {
-      output.style.display = 'none'; // Hide the preview if no file is selected
+  const output = document.getElementById('imagePreview');
+  const imageContainer = document.getElementById('imageContainer');
+  const file = event.target.files[0]; // Get the selected file
+
+  if (file) {
+    const reader = new FileReader(); // Create a FileReader to read the file
+    reader.onload = function() {
+      output.src = reader.result; // Set the image preview to the data URL
+      imageContainer.style.display = 'block'; // Show the image container
     }
-  };
+    reader.readAsDataURL(file); // Read the image as a data URL
+  } else {
+    imageContainer.style.display = 'none'; // Hide the preview container if no file is selected
+  }
+};
+
 
 
 document.getElementById("generate-btn").addEventListener("click", () => {
   
     const imageUrl = document.getElementById('imagePreview').src;
+    
 const apName= document.getElementById("full-name").value;
 const dob =document.getElementById("date-of-birth").value;
 const gender = document.getElementById("gender").value;
@@ -67,8 +71,8 @@ const citizenIssue = document.getElementById("c-issue-date").value;
                     <p class="cv-details">
                        <i> To make an impact on the organization by providing effective, comprehensive services and enhance my ability continuously by learning new culture and behaviors.</i>
                     </p>
-                   <div class="photoCV">
-                <img src="${imageUrl}" alt="photo" style="width: 100px; height: 100px; object-fit: cover;" />
+                   <div contenteditable="true" class="photoCV hide-on-empty ${imageUrl.trim() === "" ? "hide" : ""}">
+                <img src="${imageUrl}" alt="" style="width: 100px; height: 100px; object-fit: cover;" />
                    </div>
                     <div>
                     <p class="section-title"><b>Personal Details</b></p>

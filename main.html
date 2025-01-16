@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - ROMANIAN </title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+       body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    margin: 0; 
+  }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      margin-top: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="animated-heading">CV ROMANIAN</h1>
+
+      <form id="cv-form">
+        <!-- Basic Information -->
+        <div class="section">
+          <h2>Personal Information</h2>
+          <label for="last-name">Last Name:</label>
+          <input type="text" id="last-name" placeholder="Enter last name" />
+
+          <label for="first-name">First Name:</label>
+          <input type="text" id="first-name" placeholder="Enter first name" />
+
+
+          <label for="city-of-birth">Place of Birth:</label>
+          <input
+            type="text"
+            id="city-of-birth"
+            placeholder="Enter City of Birth"
+          />
+
+          <label for="date-of-birth">Date of Birth:</label>
+          <input type="text" id="date-of-birth" placeholder="01 jan 1990" />
+
+          <label for="father-name">Father's Name:</label>
+          <input
+            type="text"
+            id="father-name"
+            placeholder="Enter Father Name (SURNAME NAME)"
+          />
+
+          <label for="mother-name">Mother's Name:</label>
+          <input
+            type="text"
+            id="mother-name"
+            placeholder="Enter Mother Name (SURNAME NAME)"
+          />
+
+      
+
+    
+          <label for="pp-no">Passport Number:</label>
+          <input
+            type="text"
+            id="pp-no"
+            placeholder="(Enter Passport Number )"
+          />
+
+          
+
+          <label for="issue-date">Passport Issue Date:</label>
+          <input type="text" id="issue-date" placeholder="01 jan 1990"  />
+
+          <label for="exp-date">Passport Expiry Date:</label>
+          <input type="text" id="exp-date" placeholder="01 jan 1990" />
+
+          <label for="full-address">Full Address:</label>
+          <input
+            type="text"
+            id="full-address"
+            placeholder="(Enter full address as seen on passport)"
+          />
+
+          <label for="marital">Marital Status:</label>
+<select id="marital" onchange="updateInputValue()">
+    <option value="necăsătorit">SINGLE</option>
+    <option value="căsătorit">Married</option>
+</select>
+
+
+          
+         
+          
+          
+        </div>
+
+        <!-- Professional Information -->
+        <div class="section">
+          <h2>Professional Information</h2>
+          <label for="qualification">Qualification:</label>
+          <input
+            type="text"
+            id="qualification"
+            placeholder="Enter qualification only number"
+          />
+
+          <label for="experience">Work Experience:</label>
+<!-- TABLE TABLE TABLE  -->
+          <table id="cvTable">
+            <thead>
+              <tr>
+                <th>Nr [No]</th>
+                <th>
+                  Angajator/date identificare<br />[Employer/identification
+                  data]
+                </th>
+                <th>Perioada<br />[Period Ani]</th>
+                <th>Functia<br />[Position]</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td contenteditable="true"></td>
+                <td contenteditable="true"></td>
+                <td contenteditable="true">ANI</td>
+                <td contenteditable="true"></td>
+                <td>
+                  <!-- DELETE ROW FUNCTION ON ACTION  -->
+                  <button type="button" onclick="deleteRow(this)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <!-- ADD ROW FUNCTION ON BTN  -->
+          <button type="button" onclick="addRow()">Add Row</button>         
+        </div>
+
+        <!-- Submit -->
+        <button type="button" id="generate-btn">Generate CV</button>
+      </form>
+
+      <!-- Preview Area -->
+      <div id="cv-preview"></div>
+      
+    </div>
+    <div >
+      <button id="print-btn">Print Preview</button>
+      
+    </div>
+    <script src="tableFunction.js"></script>
+    <script src="script.js"></script>
+    <script src="print.js"></script>
+    
+  </body>
+</html>

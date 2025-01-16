@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .feature {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            display: inline-block;
+            width: 200px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .feature:hover {
+            background-color: #f0f0f0;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose a Feature</h1>
+
+    <div class="feature" onclick="window.location.href='./ROMANIAN CV/main.html';">
+        <h2>ROMANIAN CV</h2>
+        <p>Click here to make Romanian CV.</p>
+    </div>
+
+    <div class="feature" onclick="window.location.href='./NORMAL CV/main.html';">
+        <h2>NORMAL CV</h2>
+        <p>Click here to make normal cv.</p>
+    </div>
+
+    <a href="./index.html" class="button">LOG OUT</a>
+
+</body>
+</html>

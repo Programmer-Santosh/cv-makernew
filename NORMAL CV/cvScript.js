@@ -4,33 +4,50 @@ const experience = document.getElementById("my-experience").value;
 const apName= document.getElementById("full-name").value;
 const dob =document.getElementById("date-of-birth").value;
 const gender = document.getElementById("gender").value;
+const nationality =document.getElementById("nationality").value;
+const religion = document.getElementById("religion").value;
+const maritalStatus = document.getElementById("marital").value;
+const fatherName = document.getElementById("father-name").value;
+const motherName = document.getElementById("mother-name").value;
+const wifeName = document.getElementById("wife-name").value;
+const birthPlace= document.getElementById("city-of-birth").value;
+const mainAddress= document.getElementById("full-address").value;
+
+const tempAdd = document.getElementById("temp-address").value;
+const phone = document.getElementById("contact").value;
+
+const emailAdd = document.getElementById("email").value.toLowerCase();
+
+const acLevel =document.getElementById("academic-level").value;
+const school =document.getElementById("school-name").value;
+const passDate =document.getElementById("pass-date").value;
   const preview = ` <div>
                     <h2 style="text-align: center;">CURRICULUM VITAE</h2>
-                    <p class="section-title">Career Objective</p>
+                    <p class="section-title"><b>Career Objective</b></p>
                     <p class="cv-details">
-                        To make an impact on the organization by providing effective, comprehensive services and enhance my ability continuously by learning new culture and behaviors.
+                       <i> To make an impact on the organization by providing effective, comprehensive services and enhance my ability continuously by learning new culture and behaviors.</i>
                     </p>
                     
-                    <p class="section-title">Personal Details</p>
+                    <p class="section-title"><b>Personal Details</b></p>
                     <p class="cv-details">Name <span class="colon-divider">:</span> <span class="data-placer">${apName}</span></p>
                     <p class="cv-details">Date of Birth <span class="colon-divider">:</span><span class="data-placer">${dob}</span></p>
                     <p class="cv-details">Gender <span class="colon-divider">:</span> <span class="data-placer">${gender}</span></p>
-                    <p class="cv-details">Nationality <span class="colon-divider">:</span> Nepalese</p>
-                    <p class="cv-details">Religion <span class="colon-divider">:</span> Hindu</p>
-                    <p class="cv-details">Marital Status <span class="colon-divider">:</span> Married</p>
-                    <p class="cv-details">Father’s Name <span class="colon-divider">:</span> Dinanath Bhurtel</p>
-                    <p class="cv-details">Mother’s Name <span class="colon-divider">:</span> Yamkala Bhurtel</p>
-                    <p class="cv-details">Wife’s Name <span class="colon-divider">:</span> Amisha Bashyal</p>
-                    <p class="cv-details">Birth Place <span class="colon-divider">:</span> Parbat, Nepal</p>
-                    <p class="cv-details">Permanent Address <span class="colon-divider">:</span> Laxmipur, Devchuli 12, Nawalparasi (East), Nepal</p>
-                    <p class="cv-details">Temporary Address <span class="colon-divider">:</span> Maharajgunj, Kathmandu, Nepal</p>
-                    <p class="cv-details">Language Known <span class="colon-divider">:</span> Nepali, Hindi & English</p>
-                    <p class="cv-details">Contact No <span class="colon-divider">:</span> +977 9813525182‬</p>
-                    <p class="cv-details">Email <span class="colon-divider">:</span> bhurtelbhai77@gmail.com</p>
+                    <p class="cv-details">Nationality <span class="colon-divider">:</span> <span class="data-placer">${nationality}</span></p>
+                    <p class="cv-details">Religion <span class="colon-divider">:</span><span class="data-placer">${religion}</span></p>
+                    <p class="cv-details">Marital Status <span class="colon-divider">:</span> <span class="data-placer">${maritalStatus}</span></p>
+                    <p class="cv-details">Father Name <span class="colon-divider">:</span><span class="data-placer">${fatherName}</span></p>
+                    <p class="cv-details">Mother Name <span class="colon-divider">:</span> <span class="data-placer">${motherName}</span></p>
+                    <p class="cv-details hide-on-empty ${wifeName.trim() === "" ? "hide" : ""}">Wife Name <span class="colon-divider">:</span> <span class="data-placer">${wifeName}</span></p>
+                    <p class="cv-details">Birth Place <span class="colon-divider">:</span> <span class="data-placer">${birthPlace}</span></p>
+                    <p class="cv-details">Permanent Address <span class="colon-divider">:</span> <span class="data-placer">${mainAddress}</span></p>
+                    <p class="cv-details hide-on-empty ${tempAdd.trim() === "" ? "hide" : ""}">Temporary Address <span class="colon-divider">:</span><span class="data-placer">${tempAdd}</span></p>
+                    <p class="cv-details">Language Known <span class="colon-divider">:</span> <span class="data-placer" contenteditable="true">Nepali, English & Hindi</span></p>
+                    <p class="cv-details">Contact No <span class="colon-divider">:</span> <span class="data-placer" contenteditable="true">+977 ${phone}</span></p>
+                    <p class="cv-details hide-on-empty ${emailAdd.trim() === "" ? "hide" : ""}"">Email <span class="colon-divider">:</span> <span class="data-placer">${emailAdd}</span></p>
                     
-                    <p class="section-title">Academic Qualification</p>
+                    <p class="section-title"><b>Academic Qualification</b></p>
                     <p class="cv-details">
-                        Completed SLC (10) from Shree Parbat English Boarding Secondary School, Parbat, Nepal in April, 2014 A.D.
+                        Completed ${acLevel} from ${school} in ${passDate} A.D.
                     </p>
 
                     <p class="section-title"><b>Passport Details</b></p>

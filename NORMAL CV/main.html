@@ -3,82 +3,89 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV - ROMANIAN </title>
+    <title>CV - ROMANIAN</title>
     <link rel="stylesheet" href="./noCV.css" />
+    <link rel="stylesheet" href="./more.css" />
     <style>
-       body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-   
-    margin: 0; 
-  }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 20px 0;
-    }
-    th,
-    td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-    button {
-      margin-top: 10px;
-    }
-    .job-entry {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .job-entry input {
-            margin-bottom: 10px;
-            padding: 8px;
-            width: 100%;
-        }
-        .job-entry button {
-            padding: 8px 16px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .job-entry button:hover {
-            background-color: #d32f2f;
-        }
-        #job-container {
-            margin-top: 20px;
-        }
-        .add-job {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .add-job:hover {
-            background-color: #45a049;
-        }
-        .colon-divider {
-          position: absolute;
-    left: 8cm; 
-    font-size: 20px;
-    font-weight: bold;
-        }
-        .data-placer {
-          position: absolute;
-    left: 10cm;
-   
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin: 0;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      button {
+        margin-top: 10px;
+      }
+      .job-entry {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .job-entry input {
+        margin-bottom: 10px;
+        padding: 8px;
+        width: 100%;
+      }
+      .job-entry button {
+        padding: 8px 16px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .job-entry button:hover {
+        background-color: #d32f2f;
+      }
+      #job-container {
+        margin-top: 20px;
+      }
+      .add-job {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .add-job:hover {
+        background-color: #45a049;
+      }
+      .colon-divider {
+        position: absolute;
+        left: 8cm;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .data-placer {
+        position: absolute;
+        left: 10cm;
+      }
+
+      .hide-on-empty {
+        display: block;
+      }
+      .hide-on-empty.hide {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -92,32 +99,23 @@
           <label for="full-name">Full Name:</label>
           <input type="text" id="full-name" placeholder="Enter Full name" />
 
-         
-
           <label for="date-of-birth">Date of Birth:</label>
           <input type="text" id="date-of-birth" placeholder="01 jan 1990" />
 
           <label for="gender">Gender:</label>
           <select id="gender" onchange="updateInputValue()">
-              <option value="Male">BOY</option>
-              <option value="Female">GIRL</option>
+            <option value="Male">BOY</option>
+            <option value="Female">GIRL</option>
           </select>
           <label for="nationality">Nationality:</label>
-          <input
-            type="text"
-            id="nationality"
-            placeholder="Enter Nationality"
-          />
+          <input type="text" id="nationality" placeholder="Enter Nationality" />
           <label for="religion">Religion:</label>
-          <input
-            type="text"
-            id="religion"
-            placeholder="Enter Religion"
-          />
+          <input type="text" id="religion" placeholder="Enter Religion" />
           <label for="marital">Marital Status:</label>
-<select id="marital" onchange="updateInputValue()">
-    <option value="Unmarried">SINGLE</option>
-    <option value="Married">Married</option></select>
+          <select id="marital" onchange="updateInputValue()">
+            <option value="Unmarried">SINGLE</option>
+            <option value="Married">Married</option>
+          </select>
 
           <label for="father-name">Father's Name:</label>
           <input
@@ -134,23 +132,19 @@
           />
 
           <label for="wife-name">Wife's Name:</label>
-          <input
-            type="text"
-            id="wife-name"
-            placeholder="Enter Wife Name "
-          />
+          <input type="text" id="wife-name" placeholder="Enter Wife Name " />
           <label for="city-of-birth">Place of Birth:</label>
           <input
             type="text"
             id="city-of-birth"
-            placeholder="Enter City of Birth"
+            placeholder="Eg. Kathmandu, Nepal"
           />
 
           <label for="full-address">Permanent Address:</label>
           <input
             type="text"
             id="full-address"
-            placeholder="(Enter full address as seen on passport)"
+            placeholder="(Enter Full Address as same as Document)"
           />
           <label for="temp-address">Temporary Address:</label>
           <input
@@ -158,49 +152,129 @@
             id="temp-address"
             placeholder="(Enter Temporary Address)"
           />
-          <label for="pp-no">Contact Number:</label>
+          <label for="contact">Contact Number:</label>
           <input
             type="text"
             id="contact"
-            placeholder="(Enter Contact Number )"
+            placeholder="Enter Contact Number"
+            oninput="restrictToNumbers(event)"
+            required
           />
-    
+
           <label for="email">Email:</label>
+          <input type="text" id="email" placeholder="(Enter Email )" />
+          <!-- basic information end -->
+          <!-- academic info start -->
+          <h2>Academic Details</h2>
+          <label for="academic-level">Level Passed:</label>
           <input
             type="text"
-            id="email"
-            placeholder="(Enter Email )"
+            id="academic-level"
+            placeholder="Enter academic level passed"
           />
-<!-- basic information end -->
- <!-- academic info start -->
-  <h2>Academic Details</h2>
- <label for="academic-level">Level Passed:</label>
- <input type="text" id="academic-level" placeholder="Enter academic level passed"  />
- <label for="school-name">School Name</label>
- <input type="text" id="school-name" placeholder="Enter school name"  /> 
- <label for="pass-date"> Year of Completion :</label>
- <input type="text" id="pass-date" placeholder="enter year only on AD"  />
+          <label for="school-name">School Name and Address</label>
+          <input
+            type="text"
+            id="school-name"
+            placeholder="Eg. Secondary School, kathmandu, Nepal"
+          />
+          <label for="pass-date"> Year of Completion :</label>
+          <input
+            type="text"
+            id="pass-date"
+            placeholder="enter year only on AD"
+          />
+          <!--  -->
+          <button id="showButton">Add More Academic Details</button>
+          <div class="training" id="trainingDiv">
+            <h2>Additional Academic details</h2>
+            <label for="academic-level2">Level Passed:</label>
+            <input
+              type="text"
+              id="academic-level2"
+              placeholder="Enter academic level passed"
+            />
+            <label for="school-name2">School Name and Address</label>
+            <input
+              type="text"
+              id="school-name2"
+              placeholder="Eg. Secondary School, kathmandu, Nepal"
+            />
+            <label for="pass-date2"> Year of Completion :</label>
+            <input
+              type="text"
+              id="pass-date2"
+              placeholder="enter year only on AD"
+            />
+          </div>
 
- <!-- academic end  -->
-  <!-- passport details -->
-   <h2> Passport Details</h2>
- 
-  <label for="pp-no">Passport Number:</label>
-  <input type="text" id="pp-no" placeholder="01 jan 1990"  />
+          <button id="academicShowButton">Show-Hide Training</button>
+
+          <div class="training" id="trainingDiv1">
+            <h2>Training</h2>
+            <label for="academic-level3">Course Taken</label>
+            <input
+              type="text"
+              id="academic-level3"
+              placeholder="Enter academic level passed"
+            />
+            <label for="school-name3">Instuite Name and Address</label>
+            <input
+              type="text"
+              id="school-name3"
+              placeholder="Eg. Secondary School, kathmandu, Nepal"
+            />
+            <label for="pass-date3"> Duration</label>
+            <input
+              type="text"
+              id="pass-date3"
+              placeholder="Enter months only"
+            />
+            <label for="start-date">Start Date:</label>
+            <input type="text" id="start-date" placeholder="enter start date" />
+            <label for="end-date">End date</label>
+            <input type="text" id="end-date" placeholder="enter end date" />
+          </div>
+
+          <!-- academic end  -->
+          <!-- passport details -->
+          <h2>Passport Details</h2>
+
+          <label for="pp-no">Passport Number:</label>
+          <input type="text" id="pp-no" placeholder="Enter Passport Number " />
 
           <label for="issue-date">Passport Issue Date:</label>
-          <input type="text" id="issue-date" placeholder="01 jan 1990"  />
+          <input type="text" id="issue-date" placeholder="01 jan 1990" />
 
           <label for="exp-date">Passport Expiry Date:</label>
-          <input type="text" id="exp-date" placeholder="01 jan 1990" />   
-          
+          <input type="text" id="exp-date" placeholder="01 jan 1990" />
         </div>
 
-    <!-- passport details end -->
-     <!-- work experience start -->
-      <h2>Work Experience</h2>
-        
-      <!-- <div>
+        <!-- passport details end -->
+
+        <!-- citizenship -->
+
+        <button id="citizenShowButton">Add Citizenship Details</button>
+
+        <div class="citizen" id="citizen">
+          <h2>Citizenship Details</h2>
+          <label for="c-number">ID NO</label>
+          <input
+            type="text"
+            id="c-number"
+            placeholder="Enter Citizenship Number"
+          />
+          <label for="c-issue-date">Issued On</label>
+          <input
+            type="text"
+            id="c-issue-date"
+            placeholder="enter citizenship issue date"
+          />
+        </div>
+        <!-- work experience start -->
+        <h2>Work Experience</h2>
+
+        <!-- <div>
           <label for="job">Job Position:</label>
           <input type="text" id="job" placeholder="enter job position" />  
           <label for="start-date">Start Date:</label>
@@ -215,21 +289,32 @@
         </div> -->
         <div class="textarea-container">
           <label for="my-experience">Write Here:</label>
-          <textarea id="my-experience" placeholder="Enter your text..."></textarea></div>
+          <textarea
+            id="my-experience"
+            placeholder="Enter your text..."
+          ></textarea>
+        </div>
         <!-- Submit -->
         <button type="button" id="generate-btn">Generate CV</button>
       </form>
 
       <!-- Preview Area -->
       <div id="cv-preview"></div>
-      
     </div>
-    <div >
+    <div>
       <button id="print-btn">Print Preview</button>
-      
     </div>
+    <script>
+      function restrictToNumbers(event) {
+        const inputField = event.target;
+
+        inputField.value = inputField.value.replace(/[^0-9]/g, "");
+      }
+    </script>
     <script src="cvScript.js"></script>
     <script src="./cvPrint.js"></script>
-    
+    <script src="./trainingHide.js"></script>
+    <script src="./academicHide.js"></script>
+    <script src="./citizenHide.js"></script>
   </body>
 </html>

@@ -1,0 +1,50 @@
+/* Initially hide the div with class "training" */
+.training {
+    display: none;
+  }
+  
+  /* Style for the button */
+  #showButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  #showButton:hover {
+    background-color: #45a049;
+  }
+  
+  #academicShowButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  #academicShowButton:hover {
+    background-color: #45a049;
+  }
+  
+  #citizenShowButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  #citizenShowButton:hover {
+    background-color: #45a049;
+  }
+  .citizen {
+    display: none;
+  }

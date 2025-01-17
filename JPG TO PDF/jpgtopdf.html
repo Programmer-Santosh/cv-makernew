@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert JPG to PDF</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Convert JPG to PDF</h1>
+        
+        <!-- File input for images -->
+        <input type="file" id="fileInput" accept="image/jpeg" multiple />
+        
+        <!-- A section to display the uploaded images -->
+        <div id="imagePreview" class="image-preview"></div>
+
+        <!-- Button to convert to PDF -->
+        <button id="convertBtn">Convert to PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="jpgtopdf.js"></script>
+</body>
+</html>

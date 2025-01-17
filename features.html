@@ -6,65 +6,148 @@
     <title>Features Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             text-align: center;
-            padding: 50px;
-        }
-        .feature {
-            margin: 20px;
             padding: 20px;
-            border: 2px solid #ccc;
-            display: inline-block;
-            width: 200px;
+            background: #f8f9fa;
+            margin: 0;
+            color: #444;
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            animation: fadeInDown 1s ease-in-out;
+        }
+    
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            padding: 20px;
+        }
+    
+        .feature {
+            padding: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 0.8s ease-in-out;
         }
+    
         .feature:hover {
-            background-color: #f0f0f0;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
+    
+        .feature h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+    
+        .feature p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+            text-align: center;
+        }
+    
         .button {
             display: inline-block;
             margin-top: 30px;
             padding: 10px 20px;
-            background-color: #4CAF50;
+            background-color: #007bff;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, transform 0.3s;
+            animation: fadeInUp 1s ease-in-out;
         }
+    
         .button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+    
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <h1>Choose a Feature</h1>
-
-    <div class="feature" onclick="window.location.href='./ROMANIAN CV/main.html';">
-        <h2>ROMANIAN CV</h2>
-        <p>Click here to make Romanian CV.</p>
+    <div class="features-container">
+        <div class="feature" onclick="window.location.href='./ROMANIAN CV/main.html';">
+            <h2>ROMANIAN CV</h2>
+            <p>Click here to make Romanian CV.</p>
+        </div>
+    
+        <div class="feature" onclick="window.location.href='./NORMAL CV/main.html';">
+            <h2>NORMAL CV</h2>
+            <p>Click here to make normal cv.</p>
+        </div>
+    
+        <div class="feature" onclick="window.location.href='./OFFER LETTER/main.html';">
+            <h2>OFFER LETTER</h2>
+            <p>Click here to make offter letter Romania.</p>
+        </div>
+    
+        <div class="feature" onclick="window.location.href='./JPG TO PDF/jpgtopdf.html';">
+            <h2>JPG TO PDF</h2>
+            <p>Click here to change JPG TO PDF.</p>
+        </div>
+    
+        <div class="feature" onclick="window.location.href='./mergePDF/mergePDF.html';">
+            <h2>MERGE PDF</h2>
+            <p>Click here to MERGE PDF.</p>
+        </div>
     </div>
-
-    <div class="feature" onclick="window.location.href='./NORMAL CV/main.html';">
-        <h2>NORMAL CV</h2>
-        <p>Click here to make normal cv.</p>
-    </div>
-
-    <div class="feature" onclick="window.location.href='./OFFER LETTER/main.html';">
-        <h2>OFFER LETTER</h2>
-        <p>Click here to make offter letter Romania.</p>
-    </div>
-    <div class="feature" onclick="window.location.href='./JPG TO PDF/jpgtopdf.html';">
-        <h2>JPG TO PDF</h2>
-        <p>Click here to change JPG TO PDF.</p>
-    </div>
-
-    <div class="feature" onclick="window.location.href='./mergePDF/mergePDF.html';">
-        <h2>MERGE PDF</h2>
-        <p>Click here to MERGE PDF.</p>
-    </div>
-
     <a href="./index.html" class="button">LOG OUT</a>
-
 </body>
 </html>

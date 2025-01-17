@@ -1,0 +1,88 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #dropzone {
+            width: 80%;
+            max-width: 600px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #fff;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        #dropzone.dragover {
+            border-color: #007bff;
+            color: #007bff;
+        }
+
+        #uploadInput {
+            display: none;
+        }
+
+        #pdfPages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .page {
+            width: 100px;
+            height: 140px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            cursor: grab;
+            overflow: hidden;
+        }
+
+        .page.dragging {
+            opacity: 0.5;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        #downloadBtn, #uploadBtn {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #downloadBtn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+   

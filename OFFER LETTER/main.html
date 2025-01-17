@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OFFER-LETTER-GENERATOR </title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+       body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    margin: 0; 
+  }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      margin-top: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="animated-heading">OFFER - INSTORE PEOPLE </h1>
+
+      <form id="cv-form">
+        <!-- Basic Information -->
+        <div class="section">
+          <h2>Personal Information</h2>
+          <!-- name -->
+          <label for="full-name">Surname and Name:</label>
+          <input type="text" id="full-name" placeholder="SURNAME FIRST NAME" />
+          <!-- address -->
+
+          <label for="city-of-birth">Place of Birth:</label>
+          <input
+            type="text"
+            id="city-of-birth"
+            placeholder="City"
+          />
+          <input
+            type="text"
+            id="country-of-birth"
+            placeholder="Country"
+          />
+
+                <!--passport--  -->
+          <label for="pp-no">Passport:</label>
+          <input
+            type="text"
+            id="pp-no"
+            placeholder="(Enter Passport Number )"
+          />
+          <input
+            type="text"
+            id="issue-date"
+            placeholder="(Enter Issue Date )"
+          />
+          <label for="salary">Salary:</label>
+          <input
+            type="text"
+            id="salary"
+            placeholder="(Enter Salary )"
+          />
+          <label for="offer-date">Offer Expiry Date:</label>
+          <input
+            type="text"
+            id="offer-date"
+            placeholder="(Valid Until )"
+          />
+        </div>
+
+     
+        
+       
+        <!-- Submit -->
+        <button type="button" id="generate-btn">Generate OFFER</button>
+      </form>
+
+      <!-- Preview Area -->
+      <div id="cv-preview"></div>
+      
+    </div>
+    <div >
+      <button id="print-btn">Print Preview</button>
+      
+    </div>
+    
+    <script src="script.js"></script>
+    <script src="./print.js"></script>
+    
+  </body>
+</html>

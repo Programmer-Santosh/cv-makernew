@@ -5,8 +5,8 @@ const pdfPages = document.getElementById('pdfPages');
 const downloadBtn = document.getElementById('downloadBtn');
 const deleteZone = document.getElementById('deleteZone');
 
-let pdfs = []; // To store PDF ArrayBuffer data
-let images = []; // To store uploaded image data
+let pdfs = []; //puffer data store garna ko lagi
+let images = []; // iage data store garna parxa
 let totalPages = 0;
 
 // Upload button logic
@@ -35,7 +35,7 @@ deleteZone.addEventListener('drop', (event) => {
         const pageNumber = dragging.dataset.pageNumber;
         const imageIndex = dragging.dataset.imageIndex;
 
-        // Remove the page from the DOM
+        //  DOM dekgi page delete garna 
         dragging.remove();
 
         // Update internal data

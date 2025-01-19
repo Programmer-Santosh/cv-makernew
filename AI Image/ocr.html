@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport OCR with Previews</title>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .preview-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .preview {
+      flex: 1;
+      margin: 0 10px;
+      text-align: center;
+    }
+    .preview img {
+      max-width: 100%;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .result, .raw-text {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+      text-align: left;
+    }
+    .result div, .raw-text div {
+      margin-bottom: 8px;
+    }
+    #error {
+      color: red;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Passport OCR</h1>
+  <input type="file" id="uploadPassport" accept="image/*">
+  <div id="error"></div>
+  <div class="preview-container">
+    <div class="preview">
+      <h3>Image Preview</h3>
+      <img id="passportImage" src="" alt="Passport Preview">
+    </div>
+    <div class="preview">
+      <h3>Raw OCR Text</h3>
+      <div class="raw-text" contenteditable="true" id="rawOCRText">OCR text will appear here...</div>
+    </div>
+    <div class="preview">
+      <h3>Parsed Details</h3>
+      <div class="result" id="parsedDetails">Details will appear here...</div>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="showDetailsButton">Show Parsed Details</button>
+  </div>
+  
+  <script src="./script.js">
+    
+  </script>
+</body>
+</html>

@@ -3,17 +3,60 @@ const uploadInput = document.getElementById('uploadInput');
 const dropzone = document.getElementById('dropzone');
 const pdfPages = document.getElementById('pdfPages');
 const downloadBtn = document.getElementById('downloadBtn');
+const deleteZone = document.getElementById('deleteZone');
 
 let pdfs = []; // To store PDF ArrayBuffer data
 let images = []; // To store uploaded image data
 let totalPages = 0;
 
+// Upload button logic
 uploadBtn.addEventListener('click', () => uploadInput.click());
 uploadInput.addEventListener('change', handleFileUpload);
 dropzone.addEventListener('dragover', handleDragOver);
 dropzone.addEventListener('dragleave', handleDragLeave);
 dropzone.addEventListener('drop', handleFileDrop);
 
+deleteZone.addEventListener('dragover', (event) => {
+    event.preventDefault();
+    deleteZone.classList.add('dragover');
+});
+
+deleteZone.addEventListener('dragleave', () => {
+    deleteZone.classList.remove('dragover');
+});
+
+deleteZone.addEventListener('drop', (event) => {
+    event.preventDefault();
+    deleteZone.classList.remove('dragover');
+
+    const dragging = document.querySelector('.dragging');
+    if (dragging) {
+        const pdfIndex = dragging.dataset.pdfIndex;
+        const pageNumber = dragging.dataset.pageNumber;
+        const imageIndex = dragging.dataset.imageIndex;
+
+        // Remove the page from the DOM
+        dragging.remove();
+
+        // Update internal data
+        if (pdfIndex !== undefined) {
+            pdfs[parseInt(pdfIndex, 10)] = null; // Mark PDF page as removed
+        }
+        if (imageIndex !== undefined) {
+            images[parseInt(imageIndex, 10)] = null; // Mark image page as removed
+        }
+
+        // Update the total page count
+        totalPages--;
+
+        // Disable download button if no pages remain
+        if (totalPages === 0) {
+            downloadBtn.disabled = true;
+        }
+    }
+});
+
+// Handle drag-and-drop styling for the drop zone
 function handleDragOver(event) {
     event.preventDefault();
     dropzone.classList.add('dragover');
@@ -40,118 +83,117 @@ async function handleFileUpload(event) {
 }
 
 async function processFile(file) {
-    if (file.type === 'application/pdf') {
-        await processPDF(file);
-    } else if (file.type.startsWith('image/')) {
-        await processImage(file);
-    } else {
-        alert('Please upload a valid PDF or image file.');
+    try {
+        if (file.type === 'application/pdf') {
+            await processPDF(file);
+        } else if (file.type.startsWith('image/')) {
+            await processImage(file);
+        } else {
+            alert('Please upload a valid PDF or image file.');
+        }
+    } catch (error) {
+        console.error('Error processing file:', error);
+        alert('Failed to process the file. Please try again.');
     }
 }
 
 async function processPDF(file) {
-    const pdfBytes = await file.arrayBuffer();
-    pdfs.push(pdfBytes);
+    try {
+        const pdfBytes = await file.arrayBuffer();
+        pdfs.push(pdfBytes);
 
-    const loadingTask = pdfjsLib.getDocument({ data: pdfBytes });
-    const pdfDoc = await loadingTask.promise;
+        const loadingTask = pdfjsLib.getDocument({ data: pdfBytes });
+        const pdfDoc = await loadingTask.promise;
 
-    for (let i = 1; i <= pdfDoc.numPages; i++) {
-        const pageElement = await renderPDFPage(pdfDoc, i, pdfs.length - 1);
-        pdfPages.appendChild(pageElement);
-        totalPages++;
+        for (let i = 1; i <= pdfDoc.numPages; i++) {
+            const pageElement = await renderPDFPage(pdfDoc, i, pdfs.length - 1);
+            if (pageElement) {
+                pdfPages.appendChild(pageElement);
+                totalPages++;
+            }
+        }
+
+        downloadBtn.disabled = false;
+    } catch (error) {
+        console.error('Error processing PDF:', error);
+        alert('Failed to process the PDF file.');
     }
-
-    downloadBtn.disabled = false;
 }
 
 async function processImage(file) {
-    const imageUrl = URL.createObjectURL(file);
-    const img = new Image();
-    img.src = imageUrl;
+    try {
+        const imageUrl = URL.createObjectURL(file);
+        const img = new Image();
+        img.src = imageUrl;
 
-    await new Promise((resolve) => {
-        img.onload = () => {
-            const canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
+        await new Promise((resolve, reject) => {
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.naturalWidth;
+                canvas.height = img.naturalHeight;
 
-            const context = canvas.getContext('2d');
-            context.drawImage(img, 0, 0);
+                const context = canvas.getContext('2d');
+                context.drawImage(img, 0, 0);
 
-            const imageDataUrl = canvas.toDataURL('image/jpeg');
-            images.push(imageDataUrl);
+                const imageDataUrl = canvas.toDataURL('image/jpeg');
+                images.push(imageDataUrl);
 
-            const pageDiv = document.createElement('div');
-            pageDiv.classList.add('page');
-            pageDiv.draggable = true;
+                const pageDiv = document.createElement('div');
+                pageDiv.classList.add('page');
+                pageDiv.draggable = true;
 
-            const pageImg = document.createElement('img');
-            pageImg.src = imageDataUrl;
-            pageDiv.appendChild(pageImg);
+                const pageImg = document.createElement('img');
+                pageImg.src = imageDataUrl;
+                pageDiv.appendChild(pageImg);
 
-            pageDiv.dataset.imageIndex = images.length - 1;
-            pdfPages.appendChild(pageDiv);
+                pageDiv.dataset.imageIndex = images.length - 1;
+                pdfPages.appendChild(pageDiv);
 
-            pageDiv.addEventListener('dragstart', () => pageDiv.classList.add('dragging'));
-            pageDiv.addEventListener('dragend', () => pageDiv.classList.remove('dragging'));
+                pageDiv.addEventListener('dragstart', () => pageDiv.classList.add('dragging'));
+                pageDiv.addEventListener('dragend', () => pageDiv.classList.remove('dragging'));
 
-            resolve();
-        };
-    });
+                resolve();
+            };
+            img.onerror = reject;
+        });
 
-    downloadBtn.disabled = false;
+        downloadBtn.disabled = false;
+    } catch (error) {
+        console.error('Error processing image:', error);
+        alert('Failed to process the image file.');
+    }
 }
 
 async function renderPDFPage(pdfDoc, pageNumber, pdfIndex) {
-    const page = await pdfDoc.getPage(pageNumber);
-    const viewport = page.getViewport({ scale: 0.3 });
+    try {
+        const page = await pdfDoc.getPage(pageNumber);
+        const viewport = page.getViewport({ scale: 0.3 });
 
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    canvas.width = viewport.width;
-    canvas.height = viewport.height;
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
 
-    await page.render({ canvasContext: context, viewport }).promise;
+        await page.render({ canvasContext: context, viewport }).promise;
 
-    const img = document.createElement('img');
-    img.src = canvas.toDataURL();
+        const img = document.createElement('img');
+        img.src = canvas.toDataURL();
 
-    const pageDiv = document.createElement('div');
-    pageDiv.classList.add('page');
-    pageDiv.draggable = true;
-    pageDiv.appendChild(img);
-    pageDiv.dataset.pdfIndex = pdfIndex;
-    pageDiv.dataset.pageNumber = pageNumber - 1;
+        const pageDiv = document.createElement('div');
+        pageDiv.classList.add('page');
+        pageDiv.draggable = true;
+        pageDiv.appendChild(img);
+        pageDiv.dataset.pdfIndex = pdfIndex;
+        pageDiv.dataset.pageNumber = pageNumber - 1;
 
-    pageDiv.addEventListener('dragstart', () => pageDiv.classList.add('dragging'));
-    pageDiv.addEventListener('dragend', () => pageDiv.classList.remove('dragging'));
+        pageDiv.addEventListener('dragstart', () => pageDiv.classList.add('dragging'));
+        pageDiv.addEventListener('dragend', () => pageDiv.classList.remove('dragging'));
 
-    return pageDiv;
-}
-
-pdfPages.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    const dragging = document.querySelector('.dragging');
-    const afterElement = getDragAfterElement(pdfPages, event.clientX);
-    if (afterElement == null) {
-        pdfPages.appendChild(dragging);
-    } else {
-        pdfPages.insertBefore(dragging, afterElement);
+        return pageDiv;
+    } catch (error) {
+        console.error(`Error rendering PDF page ${pageNumber}:`, error);
+        return null;
     }
-});
-
-function getDragAfterElement(container, x) {
-    const draggableElements = [...container.querySelectorAll('.page:not(.dragging)')];
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = x - box.left - box.width / 2;
-        if (offset < 0 && offset > closest.offset) {
-            return { offset, element: child };
-        } else {
-            return closest;
-        }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 downloadBtn.addEventListener('click', async () => {
@@ -164,39 +206,37 @@ downloadBtn.addEventListener('click', async () => {
     const newPdfDoc = await PDFLib.PDFDocument.create();
 
     for (const { pdfIndex, pageNumber, imageIndex } of reorderedPages) {
-        if (pdfIndex !== undefined) {
-            const pdfLibDoc = await PDFLib.PDFDocument.load(pdfs[pdfIndex]);
-            const [copiedPage] = await newPdfDoc.copyPages(pdfLibDoc, [pageNumber]);
-            newPdfDoc.addPage(copiedPage);
-        } else if (imageIndex !== undefined) {
-            const imageBytes = await fetch(images[imageIndex]).then((res) => res.arrayBuffer());
-            const image = await newPdfDoc.embedJpg(imageBytes);
+        try {
+            if (pdfIndex !== undefined && pdfs[parseInt(pdfIndex, 10)] !== null) {
+                const pdfLibDoc = await PDFLib.PDFDocument.load(pdfs[parseInt(pdfIndex, 10)]);
+                const [copiedPage] = await newPdfDoc.copyPages(pdfLibDoc, [parseInt(pageNumber, 10)]);
+                newPdfDoc.addPage(copiedPage);
+            } else if (imageIndex !== undefined && images[parseInt(imageIndex, 10)] !== null) {
+                const imageBytes = await fetch(images[parseInt(imageIndex, 10)]).then((res) => res.arrayBuffer());
+                const image = await newPdfDoc.embedJpg(imageBytes);
 
-            // A4 page size in points
-            const pageWidth = 595.28;
-            const pageHeight = 841.89;
+                const pageWidth = 595.28;
+                const pageHeight = 841.89;
 
-            // Calculate the image dimensions while maintaining aspect ratio
-            const imageWidth = image.width;
-            const imageHeight = image.height;
-            const aspectRatio = imageWidth / imageHeight;
+                const aspectRatio = image.width / image.height;
+                let drawWidth, drawHeight;
 
-            let drawWidth, drawHeight;
+                if (aspectRatio > pageWidth / pageHeight) {
+                    drawWidth = pageWidth;
+                    drawHeight = pageWidth / aspectRatio;
+                } else {
+                    drawHeight = pageHeight;
+                    drawWidth = pageHeight * aspectRatio;
+                }
 
-            if (aspectRatio > pageWidth / pageHeight) {
-                drawWidth = pageWidth;
-                drawHeight = pageWidth / aspectRatio;
-            } else {
-                drawHeight = pageHeight;
-                drawWidth = pageHeight * aspectRatio;
+                const x = (pageWidth - drawWidth) / 2;
+                const y = (pageHeight - drawHeight) / 2;
+
+                const page = newPdfDoc.addPage([pageWidth, pageHeight]);
+                page.drawImage(image, { x, y, width: drawWidth, height: drawHeight });
             }
-
-            // Center the image on the page
-            const x = (pageWidth - drawWidth) / 2;
-            const y = (pageHeight - drawHeight) / 2;
-
-            const page = newPdfDoc.addPage([pageWidth, pageHeight]);
-            page.drawImage(image, { x, y, width: drawWidth, height: drawHeight });
+        } catch (error) {
+            console.error('Error adding page to the new PDF:', error);
         }
     }
 

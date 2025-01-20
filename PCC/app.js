@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullName = document.getElementById('fullName').value.trim().toUpperCase();
         const email = document.getElementById('email').value.trim().toUpperCase();
         const type = document.getElementById('type-pcc').value;
+        
         let dispatchDate = document.getElementById('dispatchDate').value;
         const sDate = new Date();
         const appliedDate =sDate.toISOString().split('T')[0];
@@ -85,12 +86,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = doc.data();
                 const formattedDispatchDate = data.dispatchDate ? validateAndConvertDate(data.dispatchDate) : 'N/A';
                 const status = getStatus(formattedDispatchDate);
+                const stype = data.dispatchDate ? '' : (data.type || "");
 
                 const recordRow = document.createElement('tr');
                 recordRow.innerHTML = `
                     <td>${data.fullName}</td>
                     <td>${data.email}</td>
-                    <td>${data.type || ""}</td>
+                    <td>${stype || ""}</td>
                     <td>${data.appliedDate || ""}</td>
                     <td>${formattedDispatchDate}</td>
                     <td>${status}</td>

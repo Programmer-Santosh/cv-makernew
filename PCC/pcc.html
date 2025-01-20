@@ -34,19 +34,40 @@
       
         <button type="button" id="statusSearchButton">Search</button></form></div> 
     </div>
+    <div class ="secDiv" >
+      <h2><label for="typeSearch">Search by Type: </label></h2> 
+
+       <div class="searchDiv"><form class="search-input">
+        <input  type="text" id="typeSearch" placeholder="Enter type ( new / re)" />
+      
+        <button type="button" id="typeSearchButton">Search</button></form></div> 
+    </div>
     </div>
   
     <!-- Form to Add Data -->
      <div class="container">
      <h2>New Data Entry</h2>
    <form class="add-record-div"id="addRecordForm">
-      <div><input type="text" id="fullName" placeholder="Enter Full Name" required />
-        <div class="gapClass"></div>
+      <input type="text" id="fullName" placeholder="Enter Full Name" required />
+        
       <input type="email" id="email" placeholder="Enter Email" required />
-    </div>
-    <div class="gapClass"></div>
-      <div><input type="date" id="dispatchDate" required /><div class="gapClass"></div>
-      <button class="button-submit" type="submit">Save to Database</button></div>
+    
+    
+   
+ 
+    <select class="selection-content" id="type-pcc" onchange="updateInputValue()">
+      <option value="New">New Apply</option>
+      <option value="Re-Apply">Re-New</option>
+  </select>
+   
+    <input class="json-hidden" type="date" id="dispatchDate"  />
+        
+     
+  
+    
+          
+        
+      <button class="button-submit" type="submit">Save </button>
     </form>
   </div>
     <hr />
@@ -89,6 +110,7 @@
     <!-- Main JavaScript -->
     <script src="search.js"></script>
     <script src="statusSearch.js"></script>
-    <script src="update.js"></script>
+    <script src="typeSearch.js"></script>
+    <!-- <script src="update.js"></script> -->
   </body>
 </html>

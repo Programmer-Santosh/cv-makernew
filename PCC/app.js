@@ -17,9 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to add data to Firestore
     document.getElementById('addRecordForm').addEventListener('submit', async (event) => {
         event.preventDefault();
-        const fullName = document.getElementById('fullName').value.trim();
-        const email = document.getElementById('email').value.trim();
+        const fullName = document.getElementById('fullName').value.trim().toUpperCase();
+        const email = document.getElementById('email').value.trim().toUpperCase();
+        const type = document.getElementById('type-pcc').value;
         let dispatchDate = document.getElementById('dispatchDate').value;
+        const sDate = new Date();
+        const appliedDate =sDate.toISOString().split('T')[0];
 
         if (!fullName || !email) {
             alert("Full Name and Email are required.");
@@ -34,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
             await db.collection('policeReports').add({
                 fullName,
                 email,
-                dispatchDate: dispatchDate || null,
+                type,
+                appliedDate,
+                // dispatchDate: dispatchDate || null,
                 timestamp: new Date(),
             });
 
@@ -63,7 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <tr>
                         <th>Full Name</th>
                         <th>Email</th>
-                        <th>Dispatch Date</th>
+                        <th>Type</th>
+                      
+                        <th>Applied On</th>
+                          <th>Dispatch Date</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
@@ -82,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 recordRow.innerHTML = `
                     <td>${data.fullName}</td>
                     <td>${data.email}</td>
+                    <td>${data.type || ""}</td>
+                    <td>${data.appliedDate || ""}</td>
                     <td>${formattedDispatchDate}</td>
                     <td>${status}</td>
                     <td>

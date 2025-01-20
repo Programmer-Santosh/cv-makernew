@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const searchButton = document.getElementById('statusSearchButton');
-    const searchInput = document.getElementById('statusSearch');
+    const searchButton = document.getElementById('typeSearchButton');
+    const sInput = document.getElementById('typeSearch');
 
     searchButton.addEventListener('click', () => {
         // Get the search term in lowercase
-        const searchTerm = searchInput.value.trim().toLowerCase();
+        const searchTerm = sInput.value.trim().toLowerCase();
         
         // Get the rows of the table
         const rows = document.getElementById('recordsTable').getElementsByTagName('tr');
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Loop through the rows of the table (start from 1 to skip the header row)
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
-            const statusCell = row.cells[5]; // The 4th column (index 3) contains the status
+            const statusCell = row.cells[2]; // The 4th column (index 3) contains the status
 
             if (statusCell) {
                 // Get the status in lowercase

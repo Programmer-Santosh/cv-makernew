@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Police Report Records</title>
+    <!-- Firebase SDK -->
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore-compat.js"></script>
+  </head>
+  <body>
+
+
+    <h1>Police Report Records</h1>
+    <div class="topDiv">
+      <div class="secDiv">
+      <h2><label for="nameSearch" >Search Records by Name</label></h2>
+        <div class="searchDiv"><form class="search-input" id="searchForm">
+          <input 
+            type="text"
+            id="searchName"
+            placeholder="Enter Full Name to Search"
+          /></div>
+        
+          <button class="button-submit"type="submit">Search</button>
+        </form>
+      </div>
+      <div class ="secDiv" >
+      <h2><label for="statusSearch">Search by Status: </label></h2> 
+
+       <div class="searchDiv"><form class="search-input">
+        <input  type="text" id="statusSearch" placeholder="Enter status (Valid, Reapply Now, Expired)" />
+      
+        <button type="button" id="statusSearchButton">Search</button></form></div> 
+    </div>
+    </div>
+  
+    <!-- Form to Add Data -->
+     <div class="container">
+     <h2>New Data Entry</h2>
+   <form class="add-record-div"id="addRecordForm">
+      <div><input type="text" id="fullName" placeholder="Enter Full Name" required />
+        <div class="gapClass"></div>
+      <input type="email" id="email" placeholder="Enter Email" required />
+    </div>
+    <div class="gapClass"></div>
+      <div><input type="date" id="dispatchDate" required /><div class="gapClass"></div>
+      <button class="button-submit" type="submit">Save to Database</button></div>
+    </form>
+  </div>
+    <hr />
+    <div class="json-hidden">
+    <div id="jsonInputContainer">
+      <h3>Paste JSON Data</h3>
+      <textarea
+        id="jsonInput"
+        rows="6"
+        cols="50"
+        placeholder='Paste JSON here (e.g., {"fullName":"John Doe","email":"johndoe@example.com","dispatchDate":"2025-01-20"})'
+      ></textarea>
+      <button id="submitJsonButton">Submit JSON to Database</button>
+    </div>
+  </div>
+    <!-- Display Data -->
+    <h2>Saved Records </h2>
+    <p id="rowCount">Total Records: 0</p>
+    <div  id="recordsContainer">
+   
+      <!-- Records will appear here -->
+      <table id="recordsTable">
+        <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Dispatch Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Records will be inserted here dynamically -->
+        </tbody>
+      </table>
+    </div>
+    <script src="config.js"></script>
+    <!-- Firebase Configuration -->
+    <script type="module" src="app.js"></script>
+    <!-- Main JavaScript -->
+    <script src="search.js"></script>
+    <script src="statusSearch.js"></script>
+    <script src="update.js"></script>
+  </body>
+</html>

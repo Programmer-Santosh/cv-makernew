@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isNaN(formattedDate.getTime())) {
             console.error('Invalid dispatch date:', dispatchDate);
-            return 'Invalid Date';
+            return '';
         }
 
         if (daysDiff < 90) {

@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
-                const formattedDispatchDate = data.dispatchDate ? validateAndConvertDate(data.dispatchDate) : 'N/A';
+                const formattedDispatchDate = data.dispatchDate ? validateAndConvertDate(data.dispatchDate) : 'OLD CLIENT';
                 const status = getStatus(formattedDispatchDate);
                 const stype = data.dispatchDate ? '' : (data.type || "");
 

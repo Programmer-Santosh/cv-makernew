@@ -87,14 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formattedDispatchDate = data.dispatchDate ? validateAndConvertDate(data.dispatchDate) : 'OLD CLIENT';
                 const status = getStatus(formattedDispatchDate);
                 const stype = data.dispatchDate ? '' : (data.type || "");
-
+                
+                const multiCheckDate = stype == 'New'? "":  formattedDispatchDate;
                 const recordRow = document.createElement('tr');
                 recordRow.innerHTML = `
                     <td>${data.fullName}</td>
                     <td>${data.email}</td>
                     <td>${stype || ""}</td>
                     <td>${data.appliedDate || ""}</td>
-                    <td>${formattedDispatchDate}</td>
+                    <td>${multiCheckDate}</td>
                     <td>${status}</td>
                     <td>
                         <button class="delete-button" data-id="${doc.id}">Delete</button>

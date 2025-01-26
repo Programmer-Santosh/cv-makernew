@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const multiCheckDate = stype == 'New'? "":  formattedDispatchDate;
                 const recordRow = document.createElement('tr');
+                if (rowCount >= 30) return;
                 recordRow.innerHTML = `
                     <td>${data.fullName}</td>
                     <td>${data.email}</td>

@@ -84,7 +84,7 @@ const citizenIssue = document.getElementById("c-issue-date").value;
                     <p class="cv-details">Marital Status <span class="colon-divider">:</span> <span class="data-placer">${maritalStatus}</span></p>
                     <p class="cv-details">Father Name <span class="colon-divider">:</span><span class="data-placer">${fatherName}</span></p>
                     <p class="cv-details">Mother Name <span class="colon-divider">:</span> <span class="data-placer">${motherName}</span></p>
-                    <p class="cv-details hide-on-empty ${wifeName.trim() === "" ? "hide" : ""}">Wife Name <span class="colon-divider">:</span> <span class="data-placer">${wifeName}</span></p>
+                    <p class="cv-details hide-on-empty ${wifeName.trim() === "" ? "hide" : ""}" contenteditable="true">Wife Name <span class="colon-divider">:</span> <span class="data-placer">${wifeName}</span></p>
                     <p class="cv-details">Birth Place <span class="colon-divider">:</span> <span class="data-placer">${birthPlace}</span></p>
                     <p class="cv-details">Permanent Address <span class="colon-divider">:</span> <span class="data-placer">${mainAddress}</span></p>
                     <p class="cv-details hide-on-empty ${tempAdd.trim() === "" ? "hide" : ""}">Temporary Address <span class="colon-divider">:</span><span class="data-placer">${tempAdd}</span></p>

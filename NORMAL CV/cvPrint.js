@@ -3,7 +3,7 @@ document.getElementById("print-btn").addEventListener("click", () => {
     const originalContent = document.body.innerHTML; // Store the original page content
 
     // Replace the body with the preview content
-    document.body.innerHTML = `<div id="cv-preview">${printContent}</div>`;
+    document.body.innerHTML = `<div id="cv-preview" contenteditable="true">${printContent}</div>`;
 
     // Trigger the print dialog
     window.print();

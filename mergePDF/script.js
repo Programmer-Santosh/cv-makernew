@@ -53,7 +53,7 @@ deleteZone.addEventListener('drop', (event) => {
 
 function handleDragOver(event) {
     event.preventDefault();
-    dropzone.classList.add('dragover');
+    dropzone.classList.add('dragover');   // on this code pages are not serially downloaded and keep the original size of page do not stretch.
 }
 
 function handleDragLeave() {
@@ -152,29 +152,68 @@ async function renderPDFPage(pdfDoc, pageNumber, pdfIndex) {
     return pageDiv;
 }
 
+// Enable drag reordering within the pdfPages container
+pdfPages.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const dragging = document.querySelector('.dragging');
+    const target = e.target.closest('.page');
+    if (!dragging || !target || dragging === target) return;
+    const rect = target.getBoundingClientRect();
+    const offset = rect.top + rect.height / 2;
+    if (e.clientY > offset) {
+         target.parentNode.insertBefore(dragging, target.nextSibling);
+    } else {
+         target.parentNode.insertBefore(dragging, target);
+    }
+});
+
 downloadBtn.addEventListener('click', async () => {
     const newPdfDoc = await PDFLib.PDFDocument.create();
+    const a4Width = 595.28;
+    const a4Height = 841.89;
+    const pageElements = Array.from(pdfPages.querySelectorAll('.page'));
+    const loadedPDFs = {}; // Cache for loaded PDFLib documents
 
-    for (let pdfIndex = 0; pdfIndex < pdfs.length; pdfIndex++) {
-        if (!pdfs[pdfIndex]) continue;
+    // Process pages in the order they appear in the DOM
+    for (const pageElement of pageElements) {
+        if (pageElement.dataset.pdfIndex !== undefined && pageElement.dataset.pageNumber !== undefined) {
+            // Process a PDF page
+            const pdfIndex = parseInt(pageElement.dataset.pdfIndex, 10);
+            const pageNumber = parseInt(pageElement.dataset.pageNumber, 10);
+            if (!loadedPDFs[pdfIndex]) {
+                loadedPDFs[pdfIndex] = await PDFLib.PDFDocument.load(pdfs[pdfIndex]);
+            }
+            const pdfLibDoc = loadedPDFs[pdfIndex];
+            const [copiedPage] = await newPdfDoc.copyPages(pdfLibDoc, [pageNumber - 1]);
 
-        const pdfLibDoc = await PDFLib.PDFDocument.load(pdfs[pdfIndex]);
-        const pageCount = pdfLibDoc.getPageCount();
+            // Compute scale to fit the copied page onto an A4 page without stretching
+            const origWidth = copiedPage.getWidth();
+            const origHeight = copiedPage.getHeight();
+            const scaleFactor = Math.min(a4Width / origWidth, a4Height / origHeight);
 
-        for (let i = 0; i < pageCount; i++) {
-            if (removedPages[pdfIndex].has(i + 1)) continue;
-            const [copiedPage] = await newPdfDoc.copyPages(pdfLibDoc, [i]);
-            newPdfDoc.addPage(copiedPage);
+            // Embed the copied page as an image so we can draw it on a blank A4 page
+            const embeddedPage = await newPdfDoc.embedPage(copiedPage);
+            const newPage = newPdfDoc.addPage([a4Width, a4Height]);
+            const { width, height } = embeddedPage.scale(scaleFactor);
+            const x = (a4Width - width) / 2;
+            const y = (a4Height - height) / 2;
+            newPage.drawPage(embeddedPage, { x, y, width, height });
+        } else if (pageElement.dataset.imageIndex !== undefined) {
+            // Process an image page
+            const imageIndex = parseInt(pageElement.dataset.imageIndex, 10);
+            const imageUrl = images[imageIndex];
+            if (!imageUrl) continue;
+            const imageBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
+            const image = await newPdfDoc.embedJpg(imageBytes);
+            const { width, height } = image.scale(1);
+            const scaleFactor = Math.min(a4Width / width, a4Height / height);
+            const newWidth = width * scaleFactor;
+            const newHeight = height * scaleFactor;
+            const page = newPdfDoc.addPage([a4Width, a4Height]);
+            const x = (a4Width - newWidth) / 2;
+            const y = (a4Height - newHeight) / 2;
+            page.drawImage(image, { x, y, width: newWidth, height: newHeight });
         }
-    }
-
-    for (const imageUrl of images) {
-        if (!imageUrl) continue;
-        const imageBytes = await fetch(imageUrl).then(res => res.arrayBuffer());
-        const image = await newPdfDoc.embedJpg(imageBytes);
-
-        const page = newPdfDoc.addPage([595.28, 841.89]);
-        page.drawImage(image, { x: 50, y: 200, width: 495, height: 441.89 });
     }
 
     const pdfBytes = await newPdfDoc.save();

@@ -47,7 +47,7 @@ de muncă de mai jos:
 <p><b>2. Locul de muncă </b></p>
    <p> Bucuresti, Romania</P>
  <p><b>3. Funcția ocupată </b></p>
-<P>Muncitor Necalificat </P>
+<P contenteditable="true" >Muncitor Necalificat </P>
  <p><b>4. Atribuții </b></p>
 <p>Atribuțiile sunt prezentate în fișa postului. </p>
 
@@ -127,7 +127,7 @@ Bucharest, Romania.
 
 
 <p><b>3. Occupied position </b></P>
-Unskilled workers 
+<P contenteditable="true" >Unskilled workers </P>
 
 
 <p><b>4. Duties </b></P>

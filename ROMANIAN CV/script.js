@@ -41,11 +41,11 @@ document.getElementById("generate-btn").addEventListener("click", () => {
       <h2 style="text-align: center;"><u>CURRICULUM VITAE</u></h2>
       <p>1.Numele [last Name]: ${lastName}</p>
       <p>2.Prenumele [Firstname]: ${firstName}</p>
-      <p>3.Numele purtate anterior [Other names, maiden name]: NU</p>
+      <p>3.Numele purtate anterior [Other names, maiden name]: </p>
       <p>4.Locul nasterii [Place of birth] Tara [Country]: NEPAL Localitatea [town/village]: ${cityBirth}</p>
       <p>5.Data nasterii [Date of birth]: ${dob}</p>
       <p>6.Parinti [parents]:- tata [father]: ${father}, mama [mother]: ${mother}</p>
-      <p>7.Cetatenia [citizenship]: NEPAL/p>
+      <p>7.Cetatenia [citizenship]: NEPAL</p>
       <p>8.Nationalitatea [nationality]: NEPALESE</p>
       <p>9.Documentul de trecere a frontierei [passport]: Nr. [No]: ${passport}, eliberat de autoritatile [issued by]:MOFA, DOP, NEPAL, la data [issue date]: ${issueDate}, valabil pana la [Validity]: ${expDate}</p>
       <p>10.Domiciliul [home address] Tara [country]: NEPAL, Localitatea [town/village]: ${fullAddress}</p>

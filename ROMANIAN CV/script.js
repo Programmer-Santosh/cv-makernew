@@ -45,8 +45,8 @@ document.getElementById("generate-btn").addEventListener("click", () => {
       <p>4.Locul nasterii [Place of birth] Tara [Country]: NEPAL Localitatea [town/village]: ${cityBirth}</p>
       <p>5.Data nasterii [Date of birth]: ${dob}</p>
       <p>6.Parinti [parents]:- tata [father]: ${father}, mama [mother]: ${mother}</p>
-      <p>7.Cetatenia [citizenship]: NEPALESE</p>
-      <p>8.Nationalitatea [nationality]: NEPALI</p>
+      <p>7.Cetatenia [citizenship]: NEPAL/p>
+      <p>8.Nationalitatea [nationality]: NEPALESE</p>
       <p>9.Documentul de trecere a frontierei [passport]: Nr. [No]: ${passport}, eliberat de autoritatile [issued by]:MOFA, DOP, NEPAL, la data [issue date]: ${issueDate}, valabil pana la [Validity]: ${expDate}</p>
       <p>10.Domiciliul [home address] Tara [country]: NEPAL, Localitatea [town/village]: ${fullAddress}</p>
       <p>11.Ultima resedinta [last address]: Tara [country]: NEPAL, Localitatea [town/village]: ${fullAddress}</p>
@@ -57,12 +57,8 @@ document.getElementById("generate-btn").addEventListener("click", () => {
 
   const additionalContent = `
       <p>15.Profesia de baza [main profession]: GENERAL WORKER</p>
-      <p>16.Limbi straine cunoscute [foreign languages]: NEPALI, ENGLISH, HINDI</p>
-      <p>17.Alte mentiuni [other]: Declar pe proprie raspundere ca nu am antecedente
-       penale, ca sunt apt de munca din punct de vedere medical si ca detin cunostinte
-        minime de o limba de circulatie internationala.[I declare that i have no 
-        criminal record, that I am medically able to work and I have minimal
-         knowledge of an international language].</p>
+      <p>16.Limbi straine cunoscute [foreign languages]:  ENGLISH</p>
+      <p>17.Alte mentiuni [other]: Declar pe proprie raspundere ca nu am antecedente penale, ca sunt apt de munca din punct de vedere medical si ca detin cunostinte minime de limba română si/sau o limba de circulatie internationala [I declare that i have no criminal record, that I am medically able to work, and I have minimal knowledge of Romanian and an international language].</p>
         <div style="text-align: right;"><p>Semnatura [Signature]:</p></div>
     `;
 

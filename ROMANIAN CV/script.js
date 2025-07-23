@@ -56,7 +56,7 @@ document.getElementById("generate-btn").addEventListener("click", () => {
     `;
 
   const additionalContent = `
-      <p>15.Profesia de baza [main profession]: GENERAL WORKER</p>
+      <p contenteditable="true">15.Profesia de baza [main profession]: GENERAL WORKER</p>
       <p>16.Limbi straine cunoscute [foreign languages]:  ENGLISH</p>
       <p>17.Alte mentiuni [other]: Declar pe proprie raspundere ca nu am antecedente penale, ca sunt apt de munca din punct de vedere medical si ca detin cunostinte minime de limba română si/sau o limba de circulatie internationala [I declare that i have no criminal record, that I am medically able to work, and I have minimal knowledge of Romanian and an international language].</p>
         <div style="text-align: right;"><p>Semnatura [Signature]:</p></div>
